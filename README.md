@@ -29,4 +29,4 @@ ECM2414-CardGame/
 
 ## Authors
 - Candidate ID: 730061231
-- Partner Candidate ID: 
+- Partner Candidate ID: 750082802
