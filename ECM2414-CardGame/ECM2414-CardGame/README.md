@@ -15,7 +15,7 @@ Basically, the test verify that the program behaves in a correct way and followi
 | Component            | Detail                                                               |
 |----------------------|----------------------------------------------------------------------|
 | Java Development Kit | 17 or newer                                                          |
-| JUnit 5              | Stand-alone launcher: ´junit-platform-console-standalone-1.10.x.jar´ |
+| JUnit 5              | Stand-alone launcher: *junit-platform-console-standalone-1.10.x.jar* |
 | Operationg system    | Any system with command line                                         |
 
 For the standalone JAR it can be use the one from Maven Central (get it through the next URL): https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/
@@ -44,11 +44,15 @@ For the standalone JAR it can be use the one from Maven Central (get it through 
 
 1. Compile
 It is recomended to compile both, the production and the test classes into a separate build directory (must be inside the correct path --..\ECM2414-CARD-GAME-- to execute the command):
-´javac -d build ^ -cp lib/junit-platform-console-standalone-1.10.5.jar ^ \src\main\java\cardgame\*.java test\cardgame\*.java´
+```java
+ javac -d build ^ -cp lib/junit-platform-console-standalone-1.10.5.jar ^ \src\main\java\cardgame\*.java test\cardgame\*.java
+```
 
 2. Run
 This command lines expects to launch the JUnit Framework console and then expects to show if the tests passed or failed.
-´java -jar lib/junit-platform-console-standalone-1.10.5.jar ^´
+ ```java
+ java -jar lib/junit-platform-console-standalone-1.10.5.jar ^
+ ```
 
 ## Running test (IDE eg: VS code)
 1. Requierements
@@ -70,10 +74,12 @@ CardGameTest.java creates 3 types of temporary files:
 1. ```java 
     Path pack = Files.createTempFile("pack_n2_", ".txt");
     Files.writeString(pack, packContent);
+    ```
 This first file simulate a good pack for 2 players.
 2. ```java 
     Path bad = Files.createTempFile("badpack_", ".txt");
     Files.writeString(bad, "1\n2\n3\n");
+    ```
 This second file simulate a invalid pack, the program needs 8xn numbers but this file gives only 3.
 3. ```java
     Path good = Files.createTempFile("goodpack_", ".txt");
@@ -81,6 +87,7 @@ This second file simulate a invalid pack, the program needs 8xn numbers but this
                 "0","0","1","1","2","2","3","3",  // to players
                 "4","4","5","5","6","6","7","7"   // to decks
         );
+    ```
 This last file basically intent to try that when the user firstly use a invalid pack (like the example above) and then use a good pack like this one, the program ignore the first bad pack and accept the second one and continue with the game correctly.
 
 However if it is necessary to experiment manually, an own pack file could be included at the following path \src\resources\sample_pack.txt and modify the n value in the tests or in the console input (manually).
@@ -90,7 +97,7 @@ However if it is necessary to experiment manually, an own pack file could be inc
 
 A valid pack for n players **must** contain exactly 8cn integers, one per line.
 Exameple for n=2:
-´1
+1
 4
 7
 3
@@ -114,7 +121,7 @@ Exameple for n=2:
 4
 5
 6
-´
+
 
 ### Changing n
 
