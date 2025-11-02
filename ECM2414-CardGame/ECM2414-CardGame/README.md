@@ -99,6 +99,7 @@ However if it is necessary to experiment manually, an own pack file could be inc
 
 A valid pack for n players **must** contain exactly 8cn integers, one per line.
 Exameple for n=2:
+ ```
 1
 4
 7
@@ -123,7 +124,7 @@ Exameple for n=2:
 4
 5
 6
-
+```
 
 ### Changing n
 
