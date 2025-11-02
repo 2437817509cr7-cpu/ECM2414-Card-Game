@@ -67,18 +67,21 @@ Open a test file and left click "Run Java"
 - \test\cardgame\CardGameTest.java creates dynamically temporary .txt files, this allows to not requiered manual files.
 
 CardGameTest.java creates 3 types of temporary files:
-1. ´Path pack = Files.createTempFile("pack_n2_", ".txt");
-        Files.writeString(pack, packContent);´
-    This first file simulate a good pack for 2 players.
-2. ´Path bad = Files.createTempFile("badpack_", ".txt");
-        Files.writeString(bad, "1\n2\n3\n");´
-    This second file simulate a invalid pack, the program needs 8xn numbers but this file gives only 3.
-3. ´Path good = Files.createTempFile("goodpack_", ".txt");
-        String content = String.join("\n",
+1. ```java 
+    Path pack = Files.createTempFile("pack_n2_", ".txt");
+    Files.writeString(pack, packContent);
+This first file simulate a good pack for 2 players.
+2. ```java 
+    Path bad = Files.createTempFile("badpack_", ".txt");
+    Files.writeString(bad, "1\n2\n3\n");
+This second file simulate a invalid pack, the program needs 8xn numbers but this file gives only 3.
+3. ```java
+    Path good = Files.createTempFile("goodpack_", ".txt");
+    String content = String.join("\n",
                 "0","0","1","1","2","2","3","3",  // to players
                 "4","4","5","5","6","6","7","7"   // to decks
-        );´
-    This last file basically intent to try that when the user firstly use a invalid pack (like the example above) and then use a good pack like this one, the program ignore the first bad pack and accept the second one and continue with the game correctly.
+        );
+This last file basically intent to try that when the user firstly use a invalid pack (like the example above) and then use a good pack like this one, the program ignore the first bad pack and accept the second one and continue with the game correctly.
 
 However if it is necessary to experiment manually, an own pack file could be included at the following path \src\resources\sample_pack.txt and modify the n value in the tests or in the console input (manually).
 
@@ -116,8 +119,14 @@ Exameple for n=2:
 ### Changing n
 
 To change the number of players go to \test\cardgame\CardGameTest.java and edit the following line:
-´String input = "**2**\n" + pack.toAbsolutePath() + "\n";´
-In this example 2 players are on the game, so, to change the number of players it is only matter of change that highlighted number **2**. There is a big BUT, if the game now is composed of 3 players the line should look like this:´String input = "**3**\n" + pack.toAbsolutePath() + "\n";´, but now in this case to play the new pack needs (8xn -> 8x3 ->24) 24 numbers.
+```java 
+String input = "**2**\n" + pack.toAbsolutePath() + "\n";
+```
+In this example 2 players are on the game, so, to change the number of players it is only matter of change that highlighted number **2**. There is a big BUT, if the game now is composed of 3 players the line should look like this:
+```java
+String input = "**3**\n" + pack.toAbsolutePath() + "\n";
+```
+but now in this case to play the new pack needs (8xn -> 8x3 ->24) 24 numbers.
 
 ## Expected output
 
