@@ -76,11 +76,13 @@ CardGameTest.java creates 3 types of temporary files:
     Files.writeString(pack, packContent);
     ```
 This first file simulate a good pack for 2 players.
+
 2. ```java 
     Path bad = Files.createTempFile("badpack_", ".txt");
     Files.writeString(bad, "1\n2\n3\n");
     ```
 This second file simulate a invalid pack, the program needs 8xn numbers but this file gives only 3.
+
 3. ```java
     Path good = Files.createTempFile("goodpack_", ".txt");
     String content = String.join("\n",
